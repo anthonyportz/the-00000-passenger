@@ -7,18 +7,16 @@
     <title>The 00000 Passenger</title>
     <style>
         :root {
-            --bg: #050505;
+            --bg: #0a0a0a;
             --text: #33ff00;
-            /* Phosphor Green */
-            --accent: #ff3333;
-            /* Rocket Red */
-            --font: 'Courier New', monospace;
+            /* Classic Phosphor Green */
+            --scanline: rgba(0, 0, 0, 0.5);
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: var(--font);
+            font-family: 'Courier New', monospace;
             margin: 0;
             padding: 2rem;
             display: flex;
@@ -26,11 +24,27 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            text-shadow: 0 0 5px var(--text);
-            /* Glowing text */
+            /* Authentic Phosphor Glow */
+            text-shadow: 0 0 2px var(--text), 0 0 10px var(--text);
+            overflow: hidden;
+            /* Stop scrollbars from breaking the illusion */
         }
 
-        /* The CRT Scanline Effect */
+        /* The Vignette (Dark Corners) */
+        body::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 100%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Scanlines */
         body::before {
             content: " ";
             display: block;
@@ -39,17 +53,19 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+            background-size: 100% 4px;
             z-index: 2;
-            background-size: 100% 2px, 3px 100%;
             pointer-events: none;
         }
 
         h1 {
             letter-spacing: 5px;
             text-transform: uppercase;
-            border-bottom: 1px dashed var(--accent);
+            border-bottom: 2px solid var(--text);
             padding-bottom: 1rem;
+            z-index: 11;
+            /* Sit above the vignette */
         }
 
         .nav-grid {
@@ -57,22 +73,50 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 4rem;
-            z-index: 3;
+            z-index: 11;
         }
 
+        /* The "Block" Hover Effect */
         a {
-            border: 1px solid #333;
-            padding: 3rem;
+            border: 1px solid var(--text);
+            padding: 2rem;
             text-decoration: none;
             color: var(--text);
-            transition: all 0.3s ease;
             text-align: center;
+            transition: all 0.1s steps(2);
+            /* Instant "digital" switch */
         }
 
         a:hover {
-            background: #111;
-            border-color: var(--text);
+            background-color: var(--text);
+            color: var(--bg);
+            /* Invert colors */
             box-shadow: 0 0 15px var(--text);
+            cursor: help;
+            /* Changes mouse to ? or crosshair */
+            font-weight: bold;
+            text-shadow: none;
+        }
+
+        /* Footer Status Line */
+        footer {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 0.8rem;
+            color: var(--text);
+            z-index: 12;
+            font-family: monospace;
+        }
+
+        .blink {
+            animation: blinker 1s step-end infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
