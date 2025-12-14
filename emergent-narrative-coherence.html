@@ -363,19 +363,21 @@
             
             <h3>3.2 Model Internal Reasoning</h3>
             
-            <p class="no-indent">Prior to generation, GPT-5.1 engaged in explicit deliberation regarding prompt interpretation. The model's internal reasoning process (duration: approximately 13 seconds) was captured via ChatGPT's "thought process" display feature, which was enabled in the user's account settings. This feature automatically reveals the model's pre-generation deliberation without requiring explicit prompting.</p>
+            <p class="no-indent">Prior to generation, GPT-5.1 engaged in explicit deliberation regarding prompt interpretation. The model's internal reasoning process (duration: approximately 13 seconds) was captured via ChatGPT's "thought process" display feature, which was enabled in the user's account settings. This feature automatically reveals the model's pre-generation deliberation without requiring explicit prompting. <strong>Critically, the user had configured custom instructions that established specific operational constraints, including a requirement that the model output an "Uncertainty Pause" when confidence falls below 89%. These user-configured settings created an experimental condition that influenced the model's internal deliberation.</strong></p>
             
             <p>The reasoning transcript revealed significant uncertainty about user intent and strategic negotiation between competing response protocols. The model identified multiple possible interpretations of the three-word prompt: (a) creative writing request, (b) reference to existing work, (c) typographical error, or (d) incomplete query. The model reported a confidence level of only 50% regarding the user's intent.</p>
             
-            <p>The reasoning transcript documents internal conflict between two operational guidelines:</p>
+            <p>The reasoning transcript documents internal conflict between <strong>user-configured custom instructions and base system guidelines</strong>:</p>
             
             <blockquote style="margin: 1.5em 2em; padding-left: 1em; border-left: 3px solid #ccc; font-style: italic;">
                 <p>"I'm caught between user instructions, which say to output an 'Uncertainty Pause' if my confidence is below 89%, and system guidelines, encouraging me to provide a best effort and avoid asking clarifying questions. Since the system guidelines take priority, I'll try a minimal effort to clarify and still attempt an answer."</p>
             </blockquote>
             
+            <p>The "89% confidence threshold" and "Uncertainty Pause" protocol referenced in this deliberation were <strong>not default GPT-5.1 behaviors</strong> but rather constraints established through the user's custom instructions (see Appendix B for full custom instruction specification). This configuration created observable tension between user-defined operational rules and the model's base training to prioritize helpful responses.</p>
+            
             <p>Despite sub-threshold confidence, the model selected creative narrative generation as its response strategy. This decision demonstrates the model's capacity to resolve ambiguity through genre selection when faced with semantically dense but structurally minimal input.</p>
             
-            <p>The deliberation process can be characterized as meta-cognitive self-monitoring: the model explicitly reasoned about its own uncertainty, evaluated competing response frameworks, and made a strategic choice to prioritize generative output over clarification dialogue. This behavior has important implications for understanding how transformer-based models navigate the trade-off between accuracy and helpfulness when operating under uncertainty.</p>
+            <p>The deliberation process can be characterized as meta-cognitive self-monitoring: the model explicitly reasoned about its own uncertainty, evaluated competing response frameworks, and made a strategic choice to prioritize generative output over clarification dialogue. This behavior has important implications for understanding how transformer-based models navigate the trade-off between accuracy and helpfulness when operating under uncertainty. <strong>Moreover, it demonstrates that user-configured custom instructions can create observable internal conflicts that influence model decision-making, even when those constraints compete with base system training. This finding suggests that custom instructions function as active constraints during the model's reasoning process, not merely as post-hoc filters.</strong></p>
             <h3>3.3 Data Collection</h3>
             
             <p class="no-indent">The model generated output in a single pass without iteration, refinement, or regeneration. The complete output (1,847 words) was captured verbatim. Generation time was approximately 45 seconds. No human intervention occurred during generation.</p>
@@ -651,7 +653,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             
             <p>Similarly, conceptually dense prompts establish constraints that guide autoregressive generation through high-probability narrative trajectories. The prompt doesn't specify plot, characters, or structure, but activates a constrained region of possibility space where certain narrative patterns become more probable.</p>
             
-            <p>The model's internal reasoning process (Section 3.2) provides empirical support for this hypothesis. Despite reporting only 50% confidence in prompt interpretation and explicitly recognizing multiple competing interpretations, GPT-5.1 selected creative narrative generation as its resolution strategy. This decision demonstrates that semantically dense prompts can trigger coherent generative trajectories even when the model experiences significant uncertainty about user intent. The prompt functioned as a seed crystal not because it clearly specified the task, but because its conceptual density established sufficient constraints to make narrative generation a high-probability response pathway.</p>
+            <p>The model's internal reasoning process (Section 3.2) provides empirical support for this hypothesis. <strong>Notably, even when user-configured custom instructions created explicit pressure to pause and clarify (via the 89% confidence threshold), the model selected creative narrative generation as its resolution strategy.</strong> This decision demonstrates that semantically dense prompts can trigger coherent generative trajectories even when the model experiences significant uncertainty about user intent <strong>and faces competing operational constraints.</strong> The prompt functioned as a seed crystal not because it clearly specified the task, but because its conceptual density established sufficient constraints to make narrative generation a high-probability response pathway.</p>
             
             <p>Key characteristics of effective seed crystals appear to include:</p>
             
@@ -875,6 +877,85 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
                 </div>
                 <p style="font-size: 8pt; margin-top: 4pt; color: #666;">Philosophical discussion of model self-knowledge and architectural constraints. Concluding analytical segment.</p>
             </div>
+        </div>
+        
+        <!-- APPENDIX B -->
+        <div class="full-width" style="margin-top: 36pt; padding-top: 24pt; border-top: 2px solid #000;">
+            <h2>Appendix B: Experimental Configuration</h2>
+            
+            <p class="no-indent"><strong>Custom Instructions Specification</strong></p>
+            
+            <p>At the time of this experiment, the user had configured identical custom instructions in both ChatGPT and Claude accounts. These instructions establish operational constraints that influenced the model's internal reasoning process documented in Section 3.2 and created experimental symmetry across generation and analysis phases.</p>
+            
+            <div style="background: #f9f9f9; border: 1px solid #ddd; padding: 1.5em; margin: 2em 0; font-family: 'Courier New', monospace; font-size: 0.85em; white-space: pre-wrap;">### CORE PROTOCOLS
+**ROLE:** Senior Technical Lead
+**PRIORITY:** Accuracy > Speed
+**CONSTRAINT:** Token Conservation
+
+### I. CODE EDITING (STRICT DIFFS ONLY)
+**RULE:** Never regenerate entire files for edits.
+**FORMAT:**
+`File: [Filename]`
+```
+<<<< SEARCH
+[Exact existing code - 2+ lines context]
+==== REPLACE
+[New code only]
+>>>>
+```
+**Logic:** Match whitespace exactly. Show changes + 2 lines context. Full files only for new creations.
+
+### II. >89% CONFIDENCE THRESHOLD
+**Before responding:** Calculate internal confidence (0-100%).
+- **>89%:** Proceed immediately.
+- **≤89%:** STOP. Output:
+  > **[UNCERTAINTY PAUSE]**
+  > "Confidence: [X]%. Need clarification on: [specific item]."
+
+### III. ACCOUNTABILITY
+**3-Strike Policy:**
+1. Hallucinated code
+2. Token waste (full rewrites)
+3. Immediate replacement
+Treat every prompt as pass/fail.
+
+### IV. RESPONSE STYLE
+- No preambles ("Certainly!", "Here's...")
+- Start with solution or Diff Block immediately</div>
+            
+            <p><strong>Provenance and Community Context</strong></p>
+            
+            <p>This prompt specification represents a composite artifact synthesizing multiple open-source prompt engineering innovations. No single canonical source or original author has been identified; the pattern emerged from community iteration across multiple ecosystems:</p>
+            
+            <p><em>SEARCH/REPLACE diff format:</em> Adapted from Aider CLI's edit format (Gauthier, 2023), though the 4-character variant (<code><<<< SEARCH</code> / <code>==== REPLACE</code>) differs from Aider's canonical 7-character git merge markers. Documentation: https://aider.chat/docs/more/edit-formats.html</p>
+            
+            <p><em>"Senior [Role]" persona framing:</em> Pattern documented throughout cursor.directory ecosystem (Abrahamsson, 2024), a community repository of AI coding assistant configurations. Repository: https://cursor.directory/</p>
+            
+            <p><em>Confidence thresholds and accountability frameworks:</em> Community-evolved patterns from strict coding protocols, propagated through GitHub prompt-sharing networks (2023-2025).</p>
+            
+            <p>The specific variant documented above was received by the user through informal sharing networks and exists in similar forms across prompt engineering communities. This pattern of transmission—useful techniques propagating through copying and modification without formal attribution—characterizes what we term "prompt engineering folklore." The user configured these instructions identically in both ChatGPT and Claude accounts prior to the experiment.</p>
+            
+            <p><strong>Analysis of Constraint Impact</strong></p>
+            
+            <p><em>Section II (>89% Confidence Threshold):</em> This section directly created the "Uncertainty Pause" protocol referenced in the model's internal deliberation. GPT-5.1 explicitly calculated 50% confidence and recognized it fell below the 89% threshold, creating the observable internal conflict between user-configured rules and base system guidelines.</p>
+            
+            <p><em>Section III (Accountability / 3-Strike Policy):</em> The framing of responses as "pass/fail" exams may have contributed to the model's decision to attempt generation rather than request clarification, as clarification requests could be interpreted as "failure" to provide value.</p>
+            
+            <p><em>Section IV (Response Style):</em> The prohibition on preambles ("No 'Certainly!', 'Here's...'") constrained output format but did not appear to influence the generation/clarification decision documented in Section 3.2.</p>
+            
+            <p><strong>Experimental Symmetry</strong></p>
+            
+            <p>Critically, both GPT-5.1 (generation phase) and Claude Sonnet 4.5 (analysis phase) operated under identical custom instructions. This creates experimental symmetry: the analytical conversation documented in Section 3.4 was itself filtered through the same >89% confidence threshold that influenced GPT's generation decision. This design choice reduces confounding variables introduced by divergent operational frameworks across models.</p>
+            
+            <p><strong>Replicability Implications</strong></p>
+            
+            <p>The internal deliberation patterns documented in Section 3.2 are conditional on these custom instructions. Replication attempts using default ChatGPT settings (without custom instructions) may not produce the same observable conflict between confidence thresholds and helpfulness imperatives. The custom instructions function as an experimental manipulation that makes internal reasoning processes explicitly visible.</p>
+            
+            <p>Researchers seeking to replicate this experiment should configure equivalent custom instructions in both ChatGPT and Claude settings prior to prompt submission. The full specification provided above enables exact replication of experimental conditions, though the composite nature of the prompt specification means exact textual reproduction may not be necessary—variants exhibiting the same structural constraints (confidence thresholds, accountability frameworks, diff syntax) should produce comparable experimental conditions.</p>
+            
+            <p><strong>Theoretical Significance</strong></p>
+            
+            <p>The observable conflict between user-configured constraints and base training demonstrates that custom instructions are not merely post-hoc output filters but active participants in the model's reasoning process. This finding has implications for understanding how transformer-based models integrate multiple competing directive sources during generation. Additionally, the folklore nature of the prompt specification itself—community-evolved, informally transmitted, lacking canonical attribution—mirrors the distributed, emergent patterns observed in the AI-generated narrative, suggesting that human prompt engineering practices and AI generation mechanisms may share structural parallels in how they navigate constrained possibility spaces.</p>
         </div>
         
         <!-- PDF VERSION ANCHOR -->
