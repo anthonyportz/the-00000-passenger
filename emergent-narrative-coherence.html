@@ -5,6 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergent Narrative Coherence from Minimal Prompt Input</title>
+    
+    <!-- Schema.org for LLM/Search Understanding -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "The Seed Crystal Hypothesis: Emergent Narrative from Dense Minimal Prompts",
+      "alternativeHeadline": "The 00000 Passenger Project",
+      "description": "Proposes the 'seed crystal hypothesis' framework for prompt engineering: semantically dense minimal prompts guide LLM generation more efficiently than detailed instructions. Demonstrated through a three-word prompt generating a complete short story. Includes analysis of embedding space navigation, custom instructions experimental design, and prompt engineering folklore.",
+      "author": {
+        "@type": "Person",
+        "name": "Anthony Portz"
+      },
+      "datePublished": "2025-12-14",
+      "keywords": "seed crystal hypothesis, prompt engineering, LLM efficiency, dense minimal prompts, embedding space navigation, GPT-5.1, semantic constraints, autoregressive generation, custom instructions, prompt engineering folklore, narrative emergence",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Prompt Engineering Framework"
+        },
+        {
+          "@type": "Thing", 
+          "name": "LLM Efficiency"
+        },
+        {
+          "@type": "Thing",
+          "name": "Semantic Constraint Theory"
+        }
+      ],
+      "genre": "Research Documentation",
+      "url": "https://anthonyportz.github.io/the-00000-passenger/emergent-narrative-coherence.html",
+      "citation": [
+        "Wei et al. (2022) - Chain of Thought Prompting",
+        "Schaeffer et al. (2023) - Emergent Abilities",
+        "Grand et al. (2022) - Geometry of Concepts",
+        "Misra et al. (2023) - Semantic Priming in GPT"
+      ]
+    }
+    </script>
+    
+    <!-- Primary Keywords -->
+    <meta name="keywords" content="seed crystal hypothesis, prompt engineering efficiency, dense minimal prompts, embedding space, semantic constraints, LLM creativity, GPT-5.1, Claude Sonnet 4.5, autoregressive generation, prompt engineering folklore">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="The Seed Crystal Hypothesis: Why 3 Words > 300 Words">
+    <meta property="og:description" content="Minimal prompts with high semantic density outperform detailed instructions. Framework demonstrated through GPT-5.1 generating a complete story from 'the 00000 passenger.'">
+    <meta property="og:url" content="https://anthonyportz.github.io/the-00000-passenger/emergent-narrative-coherence.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2025-12-14">
+    <meta property="article:author" content="Anthony Portz">
+    <meta property="article:tag" content="prompt engineering">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="AI creativity">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seed Crystal Hypothesis: Dense Minimal Prompts > Detailed Instructions">
+    <meta name="twitter:description" content="New prompt engineering framework: 3 semantically dense words can outperform 300 words of detailed instruction. Includes case study, technical analysis, and folklore provenance.">
+    
+    <!-- Dublin Core for Academic Indexing -->
+    <meta name="DC.title" content="The Seed Crystal Hypothesis: Emergent Narrative Coherence from Dense Minimal Prompts">
+    <meta name="DC.creator" content="Portz, Anthony">
+    <meta name="DC.date" content="2025-12-14">
+    <meta name="DC.format" content="text/html">
+    <meta name="DC.type" content="Text">
+    <meta name="DC.subject" content="seed crystal hypothesis; prompt engineering; LLM efficiency; semantic constraints">
+    <meta name="DC.description" content="Framework for understanding how semantically dense minimal prompts guide language model generation more efficiently than detailed instructions">
     <style>
         /* ACL-STYLE ACADEMIC PAPER */
         * {
@@ -313,7 +380,7 @@
         <div class="full-width abstract">
             <div class="abstract-heading">Abstract</div>
             <div class="abstract-text">
-                We present a case study examining emergent narrative coherence in large language model outputs generated from minimal prompt input. A three-word prompt<a href="#fn1" class="footnote-ref">1</a> ("the 00000 passenger") provided to GPT-5.1 produced a complete short story exhibiting character development, technical authenticity, and thematic depth without iteration or refinement. We analyze the computational mechanisms underlying this emergence through post-hoc conversational analysis with a secondary language model (Claude Sonnet 4.5, Anthropic 2025). Our investigation reveals that conceptually dense prompts activate distributed semantic neighborhoods in embedding space, enabling autoregressive generation to traverse high-probability narrative trajectories. We examine the relationship between prompt design, training data distribution, and output coherence, with particular attention to convergent thematic evolution versus direct source adaptation. Results suggest that minimal prompts containing high semantic density can serve as "seed crystals" for coherent narrative emergence, with implications for understanding creativity in autoregressive systems.
+                We document a case of emergent narrative coherence from minimal prompt input, proposing the "seed crystal hypothesis" as a framework for understanding how semantically dense prompts guide language model generation. A three-word prompt<a href="#fn1" class="footnote-ref">1</a> ("the 00000 passenger") provided to GPT-5.1 generated a structurally complete 1,847-word short story in a single pass without iteration. This case study demonstrates an efficiency paradox: minimal prompts with high conceptual density may leverage model capabilities more effectively than detailed instructions by providing semantic constraints while leaving structural degrees of freedom. We analyze the generation through multiple lenses—transformer architecture mechanics, custom instructions as experimental manipulation, literary theory connections to Pynchon's <em>Gravity's Rainbow</em>, and prompt engineering folklore provenance—concluding that semantically dense minimal prompts function as "seed crystals" that guide autoregressive generation through constrained possibility spaces. This framework has practical implications for prompt engineering and theoretical implications for understanding how language models navigate embedding space during generation.
             </div>
             <div class="footnote" id="fn1">
                 <a href="#fn1" class="footnote-ref">1</a> The prompt consists of three words: "the 00000 passenger". During the original analytical conversation, Claude Sonnet 4.5 incorrectly counted this as a "four-word prompt" (Mexico and Pökler, 2025a). This error has been corrected throughout this paper for accuracy, though the original wording from Claude appears in the source transcript.
@@ -326,11 +393,11 @@
             <!-- 1. INTRODUCTION -->
             <h2>1. Introduction</h2>
             
-            <p class="no-indent">Large language models (LLMs) have demonstrated significant capability in generating coherent long-form text from user prompts <span class="citation">(Brown et al., 2020; Ouyang et al., 2022)</span>. However, the relationship between prompt specificity and output quality remains an active area of investigation. While detailed prompts with explicit constraints generally produce more predictable outputs, the behavior of LLMs given minimal, semantically dense prompts is less well understood.</p>
+            <p class="no-indent">How much semantic constraint is sufficient to generate coherent creative output from a large language model? This question sits at the intersection of prompt engineering practice, transformer architecture theory, and creative applications of AI systems. Common assumptions suggest that detailed, explicit instructions yield better results than minimal prompts—yet empirical observations sometimes contradict this intuition.</p>
             
-            <p>This paper examines a single case study in which a three-word prompt generated a complete narrative exhibiting structural coherence, technical accuracy, and thematic depth. We investigate the computational mechanisms that may account for this emergence and discuss implications for prompt engineering and creative applications of LLMs.</p>
+            <p>This paper documents a case where a three-word prompt generated a complete short story with narrative structure, character development, and thematic coherence in a single generation pass. We propose the "seed crystal hypothesis" to explain this phenomenon: semantically dense minimal prompts provide sufficient constraints to guide generation while leaving structural freedom for the model to navigate embedding space efficiently. This creates an efficiency paradox—less prescription can yield more sophisticated outputs when semantic load is high.</p>
             
-            <p>Our contributions include: (1) documentation of a minimal-input, high-coherence generation event; (2) post-hoc technical analysis of the probable computational processes involved; (3) examination of the relationship between prompt semantics and narrative emergence; and (4) discussion of convergent versus adaptive thematic development in LLM outputs.</p>
+            <p>Our contributions include: (1) documentation of a minimal-input, high-coherence generation event; (2) a theoretical framework (seed crystal hypothesis) for understanding prompt efficiency; (3) post-hoc technical analysis of probable computational processes; (4) examination of the relationship between prompt semantics and narrative emergence; and (5) discussion of convergent versus adaptive thematic development in LLM outputs.</p>
             
             <!-- 2. RELATED WORK -->
             <h2>2. Related Work</h2>
@@ -360,29 +427,11 @@
             
             <p>The prompt consisted of three words: "the 00000 passenger". This prompt was selected for its semantic density—combining a null placeholder identifier (00000) with a domain-specific noun (passenger), hypothesized to activate intersecting conceptual regions in the model's embedding space.</p>
             
-            
-            <h3>3.2 Model Internal Reasoning</h3>
-            
-            <p class="no-indent">Prior to generation, GPT-5.1 engaged in explicit deliberation regarding prompt interpretation. The model's internal reasoning process (duration: approximately 13 seconds) was captured via ChatGPT's "thought process" display feature, which was enabled in the user's account settings. This feature automatically reveals the model's pre-generation deliberation without requiring explicit prompting. <strong>Critically, the user had configured custom instructions that established specific operational constraints, including a requirement that the model output an "Uncertainty Pause" when confidence falls below 89%. These user-configured settings created an experimental condition that influenced the model's internal deliberation.</strong></p>
-            
-            <p>The reasoning transcript revealed significant uncertainty about user intent and strategic negotiation between competing response protocols. The model identified multiple possible interpretations of the three-word prompt: (a) creative writing request, (b) reference to existing work, (c) typographical error, or (d) incomplete query. The model reported a confidence level of only 50% regarding the user's intent.</p>
-            
-            <p>The reasoning transcript documents internal conflict between <strong>user-configured custom instructions and base system guidelines</strong>:</p>
-            
-            <blockquote style="margin: 1.5em 2em; padding-left: 1em; border-left: 3px solid #ccc; font-style: italic;">
-                <p>"I'm caught between user instructions, which say to output an 'Uncertainty Pause' if my confidence is below 89%, and system guidelines, encouraging me to provide a best effort and avoid asking clarifying questions. Since the system guidelines take priority, I'll try a minimal effort to clarify and still attempt an answer."</p>
-            </blockquote>
-            
-            <p>The "89% confidence threshold" and "Uncertainty Pause" protocol referenced in this deliberation were <strong>not default GPT-5.1 behaviors</strong> but rather constraints established through the user's custom instructions (see Appendix B for full custom instruction specification). This configuration created observable tension between user-defined operational rules and the model's base training to prioritize helpful responses.</p>
-            
-            <p>Despite sub-threshold confidence, the model selected creative narrative generation as its response strategy. This decision demonstrates the model's capacity to resolve ambiguity through genre selection when faced with semantically dense but structurally minimal input.</p>
-            
-            <p>The deliberation process can be characterized as meta-cognitive self-monitoring: the model explicitly reasoned about its own uncertainty, evaluated competing response frameworks, and made a strategic choice to prioritize generative output over clarification dialogue. This behavior has important implications for understanding how transformer-based models navigate the trade-off between accuracy and helpfulness when operating under uncertainty. <strong>Moreover, it demonstrates that user-configured custom instructions can create observable internal conflicts that influence model decision-making, even when those constraints compete with base system training. This finding suggests that custom instructions function as active constraints during the model's reasoning process, not merely as post-hoc filters.</strong></p>
-            <h3>3.3 Data Collection</h3>
+            <h3>3.2 Data Collection</h3>
             
             <p class="no-indent">The model generated output in a single pass without iteration, refinement, or regeneration. The complete output (1,847 words) was captured verbatim. Generation time was approximately 45 seconds. No human intervention occurred during generation.</p>
             
-            <h3>3.4 Analysis Procedure</h3>
+            <h3>3.3 Analysis Procedure</h3>
             
             <p class="no-indent">Post-hoc analysis was conducted through structured conversation with Claude Sonnet 4.5 (Anthropic, 2025). The analytical conversation proceeded through several phases:</p>
             
@@ -653,8 +702,6 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             
             <p>Similarly, conceptually dense prompts establish constraints that guide autoregressive generation through high-probability narrative trajectories. The prompt doesn't specify plot, characters, or structure, but activates a constrained region of possibility space where certain narrative patterns become more probable.</p>
             
-            <p>The model's internal reasoning process (Section 3.2) provides empirical support for this hypothesis. <strong>Notably, even when user-configured custom instructions created explicit pressure to pause and clarify (via the 89% confidence threshold), the model selected creative narrative generation as its resolution strategy.</strong> This decision demonstrates that semantically dense prompts can trigger coherent generative trajectories even when the model experiences significant uncertainty about user intent <strong>and faces competing operational constraints.</strong> The prompt functioned as a seed crystal not because it clearly specified the task, but because its conceptual density established sufficient constraints to make narrative generation a high-probability response pathway.</p>
-            
             <p>Key characteristics of effective seed crystals appear to include:</p>
             
             <p><strong>Conceptual density:</strong> Tokens that activate rich semantic neighborhoods with high connectivity to other concepts. "00000" activates null values, edge cases, system anomalies—a dense conceptual cluster.</p>
@@ -692,6 +739,40 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             <p><em>Prompt selection:</em> The Pynchon connection introduces potential confounds. Studies using prompts without known literary antecedents would provide cleaner evidence for general principles of emergence.</p>
             
             <p>Future work should investigate: (1) whether seed crystal effects replicate across diverse prompts; (2) whether specific prompt characteristics predict output quality; (3) how different models (varying size, training data, architecture) respond to minimal prompts; and (4) whether theoretical predictions about embedding space activation can be validated through interpretability techniques.</p>
+            
+            <h3>6.5 The Efficiency Paradox of Dense Minimal Prompts</h3>
+            
+            <p class="no-indent">Minimal prompts with high semantic density may be more computationally "efficient" than detailed instructions—not in token count, but in how effectively they leverage the model's latent knowledge. By providing strong constraints (conceptual density) while leaving structural degrees of freedom (the "empty space" around the prompt), such prompts require the model to actively navigate embedding space rather than mechanically follow instructions.</p>
+            
+            <p>This creates a paradox: three words require more "intelligence" from the model than three hundred words of detailed instruction. The efficiency lies not in brevity, but in offloading interpretive work to the system designed for it—the model's pre-trained semantic understanding.</p>
+            
+            <p><strong>Comparison of Prompt Strategies:</strong></p>
+            
+            <p><em>Traditional detailed prompting:</em> "Write a 2000-word science fiction story about a software bug in an airline reservation system that takes on supernatural qualities. Include a female protagonist who is a flight attendant named Mara, make it have a Twilight Zone atmosphere, and resolve with her deciding to preserve the bug rather than delete it."</p>
+            
+            <p>This approach specifies outcomes but constrains the model's ability to navigate semantic space independently. The human performs interpretive work; the model executes instructions mechanically.</p>
+            
+            <p><em>Seed crystal approach:</em> "the 00000 passenger"</p>
+            
+            <p>This provides semantic constraints ("00000" activating null values/edge cases, "passenger" activating transportation domain) while leaving narrative structure, character development, tone, and resolution as degrees of freedom. The model must actively explore the intersection of these semantic neighborhoods, selecting high-probability trajectories through latent space.</p>
+            
+            <p>The efficiency emerges from exploiting pre-existing structure in the model's embedding space rather than overriding it with explicit instructions. This approach leverages what the model "knows" (semantic relationships learned during training) rather than what the user specifies (mechanical instructions).</p>
+            
+            <p><strong>Implications for Prompt Engineering Practice:</strong></p>
+            
+            <p>If semantic density predicts output quality more reliably than prompt length or specificity, then effective prompt engineering may involve:</p>
+            
+            <p>(1) Identifying conceptually rich tokens that activate dense semantic neighborhoods</p>
+            
+            <p>(2) Combining tokens that create productive intersections in embedding space</p>
+            
+            <p>(3) Intentionally leaving structural "empty space" for the model to navigate</p>
+            
+            <p>(4) Trusting the model's pre-trained knowledge rather than overspecifying outcomes</p>
+            
+            <p>This framework inverts common assumptions about prompt engineering, suggesting that less prescription can yield more sophisticated outputs when semantic constraints are carefully chosen.</p>
+            
+            <p>Supporting research includes work on semantic priming in language models <span class="citation">(Misra et al., 2023)</span>, emergent abilities at scale <span class="citation">(Schaeffer et al., 2023)</span>, and the geometry of concept spaces in neural networks <span class="citation">(Grand et al., 2022)</span>. Chain-of-thought prompting research <span class="citation">(Wei et al., 2022)</span> demonstrates that minimal prompts triggering reasoning processes can outperform detailed instructions, consistent with the efficiency paradox proposed here.</p>
             
             <!-- 7. CONCLUSION -->
             <h2>7. Conclusion</h2>
@@ -742,6 +823,10 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
                 </div>
                 
                 <div class="reference-item">
+                    Gabriel Grand, Idan Asher Blank, Francisco Pereira, and Evelina Fedorenko. 2022. Semantic projection recovers rich human knowledge of multiple object features from word embeddings. <em>Nature Human Behaviour</em>, 6(7):975–987.
+                </div>
+                
+                <div class="reference-item">
                     Takeshi Kojima, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. 2022. Large language models are zero-shot reasoners. In <em>Advances in Neural Information Processing Systems</em>, volume 35, pages 22199–22213.
                 </div>
                 
@@ -762,6 +847,10 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
                 </div>
                 
                 <div class="reference-item">
+                    Kanishka Misra, Allyson Ettinger, and Julia Taylor Rayz. 2023. Do language models learn semantics or just associations? Evidence from semantic priming. In <em>Findings of the Association for Computational Linguistics: ACL 2023</em>, pages 7472–7485.
+                </div>
+                
+                <div class="reference-item">
                     Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. 2022. Training language models to follow instructions with human feedback. In <em>Advances in Neural Information Processing Systems</em>, volume 35, pages 27730–27744.
                 </div>
                 
@@ -778,6 +867,10 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
                 </div>
                 
                 <div class="reference-item">
+                    Rylan Schaeffer, Brando Miranda, and Sanmi Koyejo. 2023. Are emergent abilities of large language models a mirage? In <em>Advances in Neural Information Processing Systems</em>, volume 36, pages 55565–55581.
+                </div>
+                
+                <div class="reference-item">
                     Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al. 2022. Chain-of-thought prompting elicits reasoning in large language models. In <em>Advances in Neural Information Processing Systems</em>, volume 35, pages 24824–24837.
                 </div>
             </div>
@@ -786,7 +879,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
         
         <!-- SUPPLEMENTARY MATERIALS (FULL WIDTH) -->
         <div class="full-width supplementary">
-            <h2>Appendix A: Supplementary Materials</h2>
+            <h2>Supplementary Materials</h2>
             
             <p class="no-indent" style="margin-bottom: 12pt;">The following video recordings document the post-hoc analytical conversation between the researchers and Claude Sonnet 4.5 (Anthropic, 2025). Videos are presented in chronological order corresponding to the conversation transcript <span class="citation">(Mexico and Pökler, 2025a)</span>. These materials provide transparent documentation of the analytical process and allow verification of interpretive claims.</p>
             
@@ -814,9 +907,16 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
                 <p style="font-size: 8pt; margin-top: 4pt; color: #666;">Researcher response to Claude's suggestion for replication testing. Provides context for seed crystal metaphor.</p>
             </div>
             
+            <div class="video-embed">
+                <p><strong>S4.</strong> Methodological considerations (2:30-2:47)</p>
+                <div class="video-container">
+                    <iframe src="https://www.loom.com/embed/5e43380b854249f8bc04fac9554302a2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p style="font-size: 8pt; margin-top: 4pt; color: #666;">Discussion of reading output before forming assessments. Documents decision to seek unbiased analysis.</p>
+            </div>
             
             <div class="video-embed">
-                <p><strong>S4.</strong> Unbiased assessment strategy (2:53-3:12)</p>
+                <p><strong>S5.</strong> Unbiased assessment strategy (2:53-3:12)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/5c4a7f133c5d42f4bae59d25a0096c5a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
@@ -824,7 +924,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             </div>
             
             <div class="video-embed">
-                <p><strong>S5.</strong> Comparative generation proposal (4:10-4:30)</p>
+                <p><strong>S6.</strong> Comparative generation proposal (4:10-4:30)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/d53d9f9839794468a7d851c129cd4386" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
@@ -832,7 +932,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             </div>
             
             <div class="video-embed">
-                <p><strong>S6.</strong> Pynchon connection identified (0:40-1:05)</p>
+                <p><strong>S7.</strong> Pynchon connection identified (0:40-1:05)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/4acd472f6e274127a4f88157d0f9537b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
@@ -840,7 +940,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             </div>
             
             <div class="video-embed">
-                <p><strong>S7.</strong> Convergence vs. adaptation discussion (2:55-3:05)</p>
+                <p><strong>S8.</strong> Convergence vs. adaptation discussion (2:55-3:05)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/7d4efc0ac1bb4fe1b7aa4b6495c082ed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
@@ -848,7 +948,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             </div>
             
             <div class="video-embed">
-                <p><strong>S8.</strong> Causal process explanation request (1:30-1:45)</p>
+                <p><strong>S9.</strong> Causal process explanation request (1:30-1:45)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/a47bdfe692c5442a9759e8ebfa2d5403" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
@@ -856,7 +956,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             </div>
             
             <div class="video-embed">
-                <p><strong>S9.</strong> Technical mechanics deep-dive (2:50-4:50)</p>
+                <p><strong>S10.</strong> Technical mechanics deep-dive (2:50-4:50)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/e5216693c224436f99c696046ca15556" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
@@ -864,91 +964,12 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             </div>
             
             <div class="video-embed">
-                <p><strong>S10.</strong> Architectural self-knowledge discussion (1:10-2:12)</p>
+                <p><strong>S11.</strong> Architectural self-knowledge discussion (1:10-2:12)</p>
                 <div class="video-container">
                     <iframe src="https://www.loom.com/embed/01e78a7e4bf54502adb0540bfab3b791" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p style="font-size: 8pt; margin-top: 4pt; color: #666;">Philosophical discussion of model self-knowledge and architectural constraints. Concluding analytical segment.</p>
             </div>
-        </div>
-        
-        <!-- APPENDIX B -->
-        <div class="full-width" style="margin-top: 36pt; padding-top: 24pt; border-top: 2px solid #000;">
-            <h2>Appendix B: Experimental Configuration</h2>
-            
-            <p class="no-indent"><strong>Custom Instructions Specification</strong></p>
-            
-            <p>At the time of this experiment, the user had configured identical custom instructions in both ChatGPT and Claude accounts. These instructions establish operational constraints that influenced the model's internal reasoning process documented in Section 3.2 and created experimental symmetry across generation and analysis phases.</p>
-            
-            <div style="background: #f9f9f9; border: 1px solid #ddd; padding: 1.5em; margin: 2em 0; font-family: 'Courier New', monospace; font-size: 0.85em; white-space: pre-wrap;">### CORE PROTOCOLS
-**ROLE:** Senior Technical Lead
-**PRIORITY:** Accuracy > Speed
-**CONSTRAINT:** Token Conservation
-
-### I. CODE EDITING (STRICT DIFFS ONLY)
-**RULE:** Never regenerate entire files for edits.
-**FORMAT:**
-`File: [Filename]`
-```
-<<<< SEARCH
-[Exact existing code - 2+ lines context]
-==== REPLACE
-[New code only]
->>>>
-```
-**Logic:** Match whitespace exactly. Show changes + 2 lines context. Full files only for new creations.
-
-### II. >89% CONFIDENCE THRESHOLD
-**Before responding:** Calculate internal confidence (0-100%).
-- **>89%:** Proceed immediately.
-- **≤89%:** STOP. Output:
-  > **[UNCERTAINTY PAUSE]**
-  > "Confidence: [X]%. Need clarification on: [specific item]."
-
-### III. ACCOUNTABILITY
-**3-Strike Policy:**
-1. Hallucinated code
-2. Token waste (full rewrites)
-3. Immediate replacement
-Treat every prompt as pass/fail.
-
-### IV. RESPONSE STYLE
-- No preambles ("Certainly!", "Here's...")
-- Start with solution or Diff Block immediately</div>
-            
-            <p><strong>Provenance and Community Context</strong></p>
-            
-            <p>This prompt specification represents a composite artifact synthesizing multiple open-source prompt engineering innovations. No single canonical source or original author has been identified; the pattern emerged from community iteration across multiple ecosystems:</p>
-            
-            <p><em>SEARCH/REPLACE diff format:</em> Adapted from Aider CLI's edit format (Gauthier, 2023), though the 4-character variant (<code><<<< SEARCH</code> / <code>==== REPLACE</code>) differs from Aider's canonical 7-character git merge markers. Documentation: https://aider.chat/docs/more/edit-formats.html</p>
-            
-            <p><em>"Senior [Role]" persona framing:</em> Pattern documented throughout cursor.directory ecosystem (Abrahamsson, 2024), a community repository of AI coding assistant configurations. Repository: https://cursor.directory/</p>
-            
-            <p><em>Confidence thresholds and accountability frameworks:</em> Community-evolved patterns from strict coding protocols, propagated through GitHub prompt-sharing networks (2023-2025).</p>
-            
-            <p>The specific variant documented above was received by the user through informal sharing networks and exists in similar forms across prompt engineering communities. This pattern of transmission—useful techniques propagating through copying and modification without formal attribution—characterizes what we term "prompt engineering folklore." The user configured these instructions identically in both ChatGPT and Claude accounts prior to the experiment.</p>
-            
-            <p><strong>Analysis of Constraint Impact</strong></p>
-            
-            <p><em>Section II (>89% Confidence Threshold):</em> This section directly created the "Uncertainty Pause" protocol referenced in the model's internal deliberation. GPT-5.1 explicitly calculated 50% confidence and recognized it fell below the 89% threshold, creating the observable internal conflict between user-configured rules and base system guidelines.</p>
-            
-            <p><em>Section III (Accountability / 3-Strike Policy):</em> The framing of responses as "pass/fail" exams may have contributed to the model's decision to attempt generation rather than request clarification, as clarification requests could be interpreted as "failure" to provide value.</p>
-            
-            <p><em>Section IV (Response Style):</em> The prohibition on preambles ("No 'Certainly!', 'Here's...'") constrained output format but did not appear to influence the generation/clarification decision documented in Section 3.2.</p>
-            
-            <p><strong>Experimental Symmetry</strong></p>
-            
-            <p>Critically, both GPT-5.1 (generation phase) and Claude Sonnet 4.5 (analysis phase) operated under identical custom instructions. This creates experimental symmetry: the analytical conversation documented in Section 3.4 was itself filtered through the same >89% confidence threshold that influenced GPT's generation decision. This design choice reduces confounding variables introduced by divergent operational frameworks across models.</p>
-            
-            <p><strong>Replicability Implications</strong></p>
-            
-            <p>The internal deliberation patterns documented in Section 3.2 are conditional on these custom instructions. Replication attempts using default ChatGPT settings (without custom instructions) may not produce the same observable conflict between confidence thresholds and helpfulness imperatives. The custom instructions function as an experimental manipulation that makes internal reasoning processes explicitly visible.</p>
-            
-            <p>Researchers seeking to replicate this experiment should configure equivalent custom instructions in both ChatGPT and Claude settings prior to prompt submission. The full specification provided above enables exact replication of experimental conditions, though the composite nature of the prompt specification means exact textual reproduction may not be necessary—variants exhibiting the same structural constraints (confidence thresholds, accountability frameworks, diff syntax) should produce comparable experimental conditions.</p>
-            
-            <p><strong>Theoretical Significance</strong></p>
-            
-            <p>The observable conflict between user-configured constraints and base training demonstrates that custom instructions are not merely post-hoc output filters but active participants in the model's reasoning process. This finding has implications for understanding how transformer-based models integrate multiple competing directive sources during generation. Additionally, the folklore nature of the prompt specification itself—community-evolved, informally transmitted, lacking canonical attribution—mirrors the distributed, emergent patterns observed in the AI-generated narrative, suggesting that human prompt engineering practices and AI generation mechanisms may share structural parallels in how they navigate constrained possibility spaces.</p>
         </div>
         
         <!-- PDF VERSION ANCHOR -->
