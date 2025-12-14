@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -359,11 +360,27 @@
             
             <p>The prompt consisted of three words: "the 00000 passenger". This prompt was selected for its semantic density—combining a null placeholder identifier (00000) with a domain-specific noun (passenger), hypothesized to activate intersecting conceptual regions in the model's embedding space.</p>
             
-            <h3>3.2 Data Collection</h3>
+            
+            <h3>3.2 Model Internal Reasoning</h3>
+            
+            <p class="no-indent">Prior to generation, GPT-5.1 engaged in explicit deliberation regarding prompt interpretation. The model's internal reasoning process (duration: approximately 13 seconds) was captured via ChatGPT's "thought process" display feature, which was enabled in the user's account settings. This feature automatically reveals the model's pre-generation deliberation without requiring explicit prompting.</p>
+            
+            <p>The reasoning transcript revealed significant uncertainty about user intent and strategic negotiation between competing response protocols. The model identified multiple possible interpretations of the three-word prompt: (a) creative writing request, (b) reference to existing work, (c) typographical error, or (d) incomplete query. The model reported a confidence level of only 50% regarding the user's intent.</p>
+            
+            <p>The reasoning transcript documents internal conflict between two operational guidelines:</p>
+            
+            <blockquote style="margin: 1.5em 2em; padding-left: 1em; border-left: 3px solid #ccc; font-style: italic;">
+                <p>"I'm caught between user instructions, which say to output an 'Uncertainty Pause' if my confidence is below 89%, and system guidelines, encouraging me to provide a best effort and avoid asking clarifying questions. Since the system guidelines take priority, I'll try a minimal effort to clarify and still attempt an answer."</p>
+            </blockquote>
+            
+            <p>Despite sub-threshold confidence, the model selected creative narrative generation as its response strategy. This decision demonstrates the model's capacity to resolve ambiguity through genre selection when faced with semantically dense but structurally minimal input.</p>
+            
+            <p>The deliberation process can be characterized as meta-cognitive self-monitoring: the model explicitly reasoned about its own uncertainty, evaluated competing response frameworks, and made a strategic choice to prioritize generative output over clarification dialogue. This behavior has important implications for understanding how transformer-based models navigate the trade-off between accuracy and helpfulness when operating under uncertainty.</p>
+            <h3>3.3 Data Collection</h3>
             
             <p class="no-indent">The model generated output in a single pass without iteration, refinement, or regeneration. The complete output (1,847 words) was captured verbatim. Generation time was approximately 45 seconds. No human intervention occurred during generation.</p>
             
-            <h3>3.3 Analysis Procedure</h3>
+            <h3>3.4 Analysis Procedure</h3>
             
             <p class="no-indent">Post-hoc analysis was conducted through structured conversation with Claude Sonnet 4.5 (Anthropic, 2025). The analytical conversation proceeded through several phases:</p>
             
@@ -634,6 +651,8 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
             
             <p>Similarly, conceptually dense prompts establish constraints that guide autoregressive generation through high-probability narrative trajectories. The prompt doesn't specify plot, characters, or structure, but activates a constrained region of possibility space where certain narrative patterns become more probable.</p>
             
+            <p>The model's internal reasoning process (Section 3.2) provides empirical support for this hypothesis. Despite reporting only 50% confidence in prompt interpretation and explicitly recognizing multiple competing interpretations, GPT-5.1 selected creative narrative generation as its resolution strategy. This decision demonstrates that semantically dense prompts can trigger coherent generative trajectories even when the model experiences significant uncertainty about user intent. The prompt functioned as a seed crystal not because it clearly specified the task, but because its conceptual density established sufficient constraints to make narrative generation a high-probability response pathway.</p>
+            
             <p>Key characteristics of effective seed crystals appear to include:</p>
             
             <p><strong>Conceptual density:</strong> Tokens that activate rich semantic neighborhoods with high connectivity to other concepts. "00000" activates null values, edge cases, system anomalies—a dense conceptual cluster.</p>
@@ -861,7 +880,7 @@ ACTIVE_REGION = NEIGHBORHOOD("00000", ε) ∩ NEIGHBORHOOD("passenger", ε)
         <!-- PDF VERSION ANCHOR -->
         <div class="full-width" id="pdf-version" style="margin-top: 24pt; padding-top: 12pt; border-top: 2px solid #000;">
             <p style="text-align: center; font-size: 9pt; color: #666;">
-                <strong>PDF Version:</strong> A static PDF rendering of this paper is available for download, citation, and archival purposes. The PDF version contains identical content with static screenshots in place of embedded videos, formatted for print distribution.
+                <strong>PDF Version:</strong> <a href="emergent-narrative-coherence.pdf" download style="color: #000; text-decoration: underline;">Download PDF</a> — A static PDF rendering of this paper is available for download, citation, and archival purposes. The PDF version contains identical content with placeholder boxes in place of embedded videos, formatted for print distribution (14 pages, 130KB).
             </p>
         </div>
         
