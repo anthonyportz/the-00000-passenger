@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 00000 Passenger</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+            --accent-color: #ff3333;
+            --font-stack: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-stack);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        header {
+            margin-top: 5vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .card {
+            border: 1px solid var(--text-color);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .card:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .card-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The 00000 Passenger</h1>
+    </header>
+
+    <main>
+        <a href="the-00000-passenger-project-FINAL.html" class="card">
+            <span class="card-label">THE EXPERIMENT</span>
+        </a>
+        <a href="emergent-narrative-coherence-CORRECTED.html" class="card">
+            <span class="card-label">THE ANALYSIS</span>
+        </a>
+        <a href="emergent-narrative-coherence-ACL-FINAL.pdf" class="card" download>
+            <span class="card-label">DOWNLOAD DATA (.PDF)</span>
+        </a>
+    </main>
+
+    <footer>
+        SYSTEM_READY
+    </footer>
+
+</body>
+</html>
